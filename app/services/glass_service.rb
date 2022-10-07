@@ -2,7 +2,6 @@ class GlassService
 
   attr_reader :errors
 
-
   def initialize(lens, frames, user_id)
     @lens = lens
     @frame = frames
