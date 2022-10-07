@@ -4,7 +4,7 @@ FactoryBot.define do
     description { Faker::Movies::HarryPotter.quote }
     status { 1 }
     stock { 1 }
-    price { 9.99 }
+    price { 100.0 }
 
     trait :active do
       after(:create) do |frame|
@@ -17,6 +17,12 @@ FactoryBot.define do
       after(:create) do |frame|
         frame.status = 0
         frame.save
+      end
+    end
+
+    trait :out_of_stock do
+      before(:create) do |frame|
+        frame.stock = 0
       end
     end
   end

@@ -6,7 +6,6 @@ RSpec.describe "Api::V1::Lenses", type: :request do
   let(:normal_user_token) { user_login(normal_user) }
   let(:admin_user_token) { user_login(admin_user) }
 
-
   context 'Frames Authentication' do
 
     it 'should not allow normal user create lenses' do
@@ -72,14 +71,14 @@ RSpec.describe "Api::V1::Lenses", type: :request do
       Lens.destroy_all
     end
 
-    it "should fetch lenses with GBP rate of 87.79 for user with GBP currency" do
+    it "should fetch lenses with GBP rate" do
       get '/api/v1/lenses?page=1&currency=GBP', headers: { 'Authorization' => normal_user_token }, xhr: true
       json = JSON.parse(response.body)
       lens_price = json['lenses'][0]['price']
-      expect(lens_price).to eq(87.79)
+      expect(lens_price).to eq(87.81)
     end
 
-    it "should fetch only lenses with USD rate of" do
+    it "should fetch only lenses with USD rate" do
       get '/api/v1/lenses?page=1&currency=USD', headers: { 'Authorization' => normal_user_token }, xhr: true
       json = JSON.parse(response.body)
       lens_price = json['lenses'][0]['price']
@@ -87,14 +86,14 @@ RSpec.describe "Api::V1::Lenses", type: :request do
     end
 
 
-    it "should fetch only lenses with JOD rate of" do
+    it "should fetch only lenses with JOD rate" do
       get '/api/v1/lenses?page=1&currency=JOD', headers: { 'Authorization' => normal_user_token }, xhr: true
       json = JSON.parse(response.body)
       lens_price = json['lenses'][0]['price']
       expect(lens_price).to eq(69.48)
     end
 
-    it "should fetch only lenses with JPY rate of" do
+    it "should fetch only lenses with JPY rate" do
       get '/api/v1/lenses?page=1&currency=JPY', headers: { 'Authorization' => normal_user_token }, xhr: true
       json = JSON.parse(response.body)
       lens_price = json['lenses'][0]['price']

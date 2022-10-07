@@ -2,6 +2,7 @@
 set -e
 echo "[ bin/ci ] Running  tests"
 RAILS_ENV=test rspec
+bin/rails db:reset RAILS_ENV=test
 echo "[ bin/ci ] Analyzing code for security vulnerabilities."
 echo "[ bin/ci ] Output will be in tmp/brakeman.html, which"
 echo "[ bin/ci ] can be opened in your browser."

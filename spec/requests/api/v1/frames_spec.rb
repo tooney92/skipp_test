@@ -58,27 +58,21 @@ RSpec.describe "Api::V1::Frames", type: :request do
     context 'prices based on user currency' do
 
       before(:all) do
-        Frame.create({
-                      "name": "demo_1",
-                      "description": "demo demo",
-                      "status": 'active',
-                      "stock": 1,
-                      "price": 100.0
-                    })
+        FactoryBot.create(:frame)
       end
 
       after(:all) do
         Frame.destroy_all
       end
 
-      it "should fetch frames with GBP rate of 87.79 for user with GBP currency" do
+      it "should fetch frames with GBP rate" do
         get '/api/v1/frames?page=1&currency=GBP', headers: { 'Authorization' => normal_user_token }, xhr: true
         json = JSON.parse(response.body)
         lens_price = json['frames'][0]['price']
-        expect(lens_price).to eq(87.79)
+        expect(lens_price).to eq(87.81)
       end
 
-      it "should fetch only frames with USD rate of" do
+      it "should fetch only frames with USD rate" do
         get '/api/v1/frames?page=1&currency=USD', headers: { 'Authorization' => normal_user_token }, xhr: true
         json = JSON.parse(response.body)
         lens_price = json['frames'][0]['price']
@@ -86,14 +80,14 @@ RSpec.describe "Api::V1::Frames", type: :request do
       end
 
 
-      it "should fetch only frames with JOD rate of" do
+      it "should fetch only frames with JOD rate" do
         get '/api/v1/frames?page=1&currency=JOD', headers: { 'Authorization' => normal_user_token }, xhr: true
         json = JSON.parse(response.body)
         lens_price = json['frames'][0]['price']
         expect(lens_price).to eq(69.48)
       end
 
-      it "should fetch only frames with JPY rate of" do
+      it "should fetch only frames with JPY rate" do
         get '/api/v1/frames?page=1&currency=JPY', headers: { 'Authorization' => normal_user_token }, xhr: true
         json = JSON.parse(response.body)
         lens_price = json['frames'][0]['price']

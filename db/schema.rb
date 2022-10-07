@@ -36,8 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_163908) do
     t.bigint "user_id", null: false
     t.bigint "frame_id", null: false
     t.bigint "lens_id", null: false
-    t.decimal "lens_amount", precision: 5, scale: 2, null: false
-    t.decimal "frames_amount", precision: 5, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["frame_id"], name: "index_glasses_on_frame_id"
