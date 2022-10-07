@@ -1,4 +1,4 @@
-# README for AZA Finance Assigment
+# README
 
 * Ruby version: ruby "3.0.2".
 
@@ -20,7 +20,7 @@
 
 Endpoints documented on postman.
 
-* API docs https://documenter.getpostman.com/view/9973912/2s83zcSmnY
+API docs https://documenter.getpostman.com/view/9973912/2s83zgsPw3
 
 # Notes
 
